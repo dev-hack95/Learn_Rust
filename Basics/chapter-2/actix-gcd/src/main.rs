@@ -1,35 +1,28 @@
-use actix_web::{web, App, HttpResponse, HttpServer};
+use actix_web::{get, post, web, App, HttpResponse, HttpServer, Responder};
 
-fn get_index() -> HttpResponse {
-    HttpResponse::Ok()
-        .content_type("text/html")
-        .body(
-            r#"
-               <title>GCD Calculator</title>
-               <form action="/gcd" method="post">
-               <input type="text" name="n"/>
-               <input type="text" name="m"/>
-               <button type="submit">Compute</button>
-               </form>
-            "#,
-        )
+#[get("/")]
+async fn hello() -> impl Responder {
+    HttpResponse::Ok().body("Hello World!")
 }
 
-fn main() {
-    let server = HttpServer::new(|| {
-        App::new().route("/", web::get().to(get_index))
-    });
-
-    println!("Server running on http://localhost:3000 ...");
-    match server.bind("127.0.0.1:3000") {
-        Ok(server) => {
-            if let Err(e) = server.run() {
-                eprintln!("Error occurred while running server: {}", e);
-            }
-        }
-        Err(e) => {
-            eprintln!("Error occurred while binding server to given address: {}", e);
-        }
-    }
+#[post("/echo")]
+async fn echo(req_body: String) -> impl Responder {
+    HttpResponse::Ok().body(req_body)
 }
 
+async fn manual_hello() -> impl Responder {
+    HttpResponse::Ok().body("Hey there!")
+}
+
+#[get("/hello")]
+async fn hello_world() -> impl Responder {
+    HttpResponse::Ok().body("Rust is fast")
+}
+
+
+#[actix_web::main]
+async fn main() -> std::io::Result<()> {
+    HttpServer::new(|| {
+        App::new().service(hello).service(hello_world).service(echo).route("/hey", web::get().to(manual_hello))
+    }).bind(("127.0.0.1", 8080))?.run().await
+}

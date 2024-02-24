@@ -1,6 +1,7 @@
 // An attribute to hide warning for unused code.
 #![allow(dead_code)]
 
+
 #[derive(Debug)]
 struct Person {
     name: String,
@@ -24,9 +25,15 @@ struct Rectangle {
     bottom_right: Point,
 }
 
+#[derive(Debug)]
+struct Circle {
+    r: f32
+}
+
 fn main() {
     let name = String::from("Peter");
     let age = 27;
+    let pi = 3.14;
     let peter = Person{name, age};
  
     println!("{:?}", peter);
@@ -36,6 +43,10 @@ fn main() {
 
     let bottom_right = Point{x:2.5, ..point};
     println!("{:?}", bottom_right);
+
+    let circle: Circle = Circle{r: 3.0};
+    println!("{}", circle.r);
+    println!("Area of circle {}", pi*circle.r*circle.r);
 
     let _rectangle = Rectangle {
         top_left: point,
