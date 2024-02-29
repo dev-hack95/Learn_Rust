@@ -13,6 +13,13 @@ fn main() {
 
     let jjk = Anime { name: "jjk", pass: true};
     let anime_ref = &jjk;
-    println!("{:?}", anime_ref);
+    println!("{:?}", anime_ref.name);
+    // Similar as above but derefrence retween out
+    println!("{:?}", (*anime_ref).name);
     println!("{:?}", jjk);
+
+    let mut v: Vec<i32> = vec![5, 4, 3, 2, 1];
+    v.sort();
+    println!("{:?}", v);
+    println!("{:?}", (&mut v));
 }
