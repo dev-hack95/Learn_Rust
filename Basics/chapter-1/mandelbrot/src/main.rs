@@ -1,12 +1,6 @@
 use::num::Complex;
 use::std::str::FromStr;
-//fn square_loop(mut c : f64) {
-//    let mut x = 0.0;
-//    loop {
-       // x = x * x + c;
-//        println!("{}", x);
-//    }
-//}
+/// The FromStr trait is used for converting a string into another type.
 
 #[warn(dead_code)]
 fn complex_square_add_loop(c: Complex<f64>) {
@@ -38,10 +32,11 @@ fn escape_time(c: Complex<f64>, limit: usize) -> Option<usize> {
 /// `<T: FromStr>`: This is a generic type prameter. It indicates that the
 /// function works with any type `T` as long as `T` implements the `FromStr`
 /// The function return a tuple of two calues of type `T` i.e Option<(T, T)> 
+/// we can define parse pair as i32 i.e parse_pair::<i32> or parse_pair::<f64>
 fn parse_pair<T: FromStr>(s: &str, seperator: char) -> Option<(T, T)> {
     match s.find(seperator) {
-        None => None,
-        Some(index) => {
+        None => None, // If seperator not found then return None
+        Some(index) => { // If seperator found we proceed with parsing substring
             match (T::from_str(&s[..index]), T::from_str(&s[index + 1..])) {
                 (Ok(l), Ok(r)) => Some((l, r)),
                 _ => None
