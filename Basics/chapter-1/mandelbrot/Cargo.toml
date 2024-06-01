@@ -4,4 +4,5 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+image = { version = "0.24", features = ["png"] }
 num = "0.4.3"
