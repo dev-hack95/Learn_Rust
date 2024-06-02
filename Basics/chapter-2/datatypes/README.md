@@ -15,3 +15,18 @@
 ```bash
 Rust uses the u8 type for byte values
 ```
+
+* Operations
+
+| Operation           | Name Suffix | Example                                        |
+|---------------------|-------------|------------------------------------------------|
+| Addition            | add         | 100_i8.checked_add(27) == Some(127)            |
+| Subtraction         | sub         | 10_u8.checked_sub(11) == None                  |
+| Multiplication      | mul         | 128_u8.saturating_mul(3) == 255                |
+| Division            | div         | 64_u16.wrapping_div(8) == 8                    |
+| Remainder           | rem         | (-32768_i16).wrapping_rem(-1) == 0             |
+| Negation            | neg         | (-128_i8).checked_neg() == None                |
+| Absolute value      | abs         | (-32768_i16).wrapping_abs() == -32768          |
+| Exponentiation      | pow         | 3_u8.checked_pow(4) == Some(81)                |
+| Bitwise left shift  | shl         | 10_u32.wrapping_shl(34) == 40                  |
+| Bitwise right shift | shr         | 40_u64.wrapping_shr(66) == 10                  |
