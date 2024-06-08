@@ -30,3 +30,9 @@ Rust uses the u8 type for byte values
 | Exponentiation      | pow         | 3_u8.checked_pow(4) == Some(81)                |
 | Bitwise left shift  | shl         | 10_u32.wrapping_shl(34) == 40                  |
 | Bitwise right shift | shr         | 40_u64.wrapping_shr(66) == 10                  |
+
+* `Float point types`
+| Type | Precision | Range |
+|------|-----------|-------|
+| f32  | IEEE single precision (at least 6 decimal digits) | Roughly –3.4 × 10<sup>38</sup> to +3.4 × 10<sup>38</sup> |
+| f64  | IEEE double precision (at least 15 decimal digits) | Roughly –1.8 × 10<sup>308</sup> to +1.8 × 10<sup>308</sup> |
