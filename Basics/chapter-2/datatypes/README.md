@@ -32,6 +32,7 @@ Rust uses the u8 type for byte values
 | Bitwise right shift | shr         | 40_u64.wrapping_shr(66) == 10                  |
 
 * `Float point types`
+
 | Type | Precision                                          | Range                                                      |
 |------|----------------------------------------------------|------------------------------------------------------------|
 | f32  | IEEE single precision (at least 6 decimal digits)  | Roughly –3.4 × 10<sup>38</sup> to +3.4 × 10<sup>38</sup>   |
