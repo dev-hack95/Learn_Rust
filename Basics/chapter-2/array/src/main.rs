@@ -1,15 +1,20 @@
-/// A vector is nothing but an array of size n 
-/// A Vector can of many size it can be of 1X1 or 1X2 ... etc
-
-fn build_vector() -> Vec<i32> {
-    // Declare a mutable vector(array) which will only accept of i32 type in data
-    let mut v: Vec<i32> = Vec::<i32>::new();
-    v.push(1); // Push data to an vector i.e array
-    v.push(2);
-    v.push(3);
-    return v;
+fn print_varible_type<K>(_: &K) {
+    println!("{}", std::any::type_name::<K>())
 }
 
 fn main() {
-    println!("{:?}", build_vector());
+    // Define array of a particular size 
+    // arr1 accepts the u32 datatype of size 6 
+    let mut arr1: [u32; 6] = [1, 2, 3, 4, 5, 5];
+    println!("arr1: {:?}", arr1);
+    arr1[5] = 6;
+    println!("arr1: {:?}", arr1);
+
+    let arr2 = ["a", "b", "c"];
+    print_varible_type(&arr2);
+    println!("arr2: {:?}", arr2);
+
+    let mut chaos = [3, 5, 4, 1, 2];
+    chaos.sort();
+    println!("{:?}", chaos);
 }
